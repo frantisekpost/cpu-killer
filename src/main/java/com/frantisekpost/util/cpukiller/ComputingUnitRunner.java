@@ -28,13 +28,13 @@ public class ComputingUnitRunner {
 		}
 	}
 
-	void run() {
+	public void run() {
 		for (int i = 0; i < threads.length; i++) {
 			threads[i].start();
 		}
 	}
 
-	void stop() {
+	public void stop() {
 		for (int i = 0; i < threads.length; i++) {
 			threads[i].stopWorking();
 		}

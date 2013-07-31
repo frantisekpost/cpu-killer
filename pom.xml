@@ -8,9 +8,21 @@
 		<version>7</version>
 	</parent>
 
+	<properties>
+		<javafx.version>2.2.4</javafx.version>
+	</properties>
+
 	<groupId>com.frantisekpost.util</groupId>
 	<artifactId>cpu-killer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<description>Simple utility to slow down pc by making CPU idle computing something</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>javafx</artifactId>
+			<version>${javafx.version}</version>
+		</dependency>
+	</dependencies>
 	
 </project>

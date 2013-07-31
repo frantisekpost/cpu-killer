@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.00019999999495" prefWidth="387.0" xmlns:fx="http://javafx.com/fxml" fx:controller="com.frantisekpost.util.cpukiller.app.AppController">
+  <children>
+    <Label layoutX="40.0" layoutY="25.0" prefHeight="35.0" prefWidth="153.5" text="CPU killer">
+      <font>
+        <Font name="Arial Bold" size="30.0" fx:id="x1" />
+      </font>
+    </Label>
+    <Label layoutX="40.0" layoutY="90.0" text="Number of cores:" />
+    <Separator layoutY="68.0" prefHeight="8.0" prefWidth="572.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+    <Label fx:id="numberOfCoresLabel" layoutX="138.0" layoutY="90.0" prefWidth="11.0" text="" />
+    <Label layoutX="40.0" layoutY="120.0" text="Load:" />
+    <Slider fx:id="loadSlider" layoutY="151.0" majorTickUnit="10.0" max="99.0" min="10.0" minorTickCount="1" prefWidth="205.0" snapToTicks="true" value="50.0" AnchorPane.leftAnchor="41.0" AnchorPane.rightAnchor="100.0" />
+    <Label fx:id="loadLabel" layoutY="138.0" text="" AnchorPane.rightAnchor="41.0">
+      <font>
+        <Font size="20.0" />
+      </font>
+    </Label>
+    <Button fx:id="startButton" mnemonicParsing="false" prefHeight="65.0" prefWidth="368.0" text="Start" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="18.0" />
+    <Label fx:id="runningLabel" font="$x1" layoutX="211.0" layoutY="25.0" text="running" textFill="#ff2929" visible="false" />
+  </children>
+</AnchorPane>
