@@ -1,37 +1,39 @@
 package com.frantisekpost.util.cpukiller;
 
-import java.util.Random;
 
 /**
- * Simple implementation creating 24 threads, computing all the time - taking theoretically 100% CPU
+ * Simple console implementation, which takes argument with value of CPU load.
  *  
  * @author Frantisek Post
  *
  */
 public class CpuKiller {
 
-	public static void main(String[] args) {
-		
-		Thread[] threads = new Thread[24];
-		
-		for (int i = 0; i < 24; i++) {
-			threads[i] = new Thread(new Runnable() {
-				
-				@SuppressWarnings("unused")
-				public void run() {
-					while (true) {
-						Random r = new Random();
-						double d = r.nextDouble();
-						double x = Math.sin(d) * d * Math.log10(d);
-					}
-				}
-				
-			});
+	public static void main(String[] args) throws InterruptedException {
+		if (args.length < 1) {
+			System.out.println("argument with CPU load (inside the interval (0.1,0.99)) needed\n");
+			return;
 		}
-		
-		for (int i = 0; i < 24; i++) {
-			threads[i].start();
+		try {
+			float load = Float.parseFloat(args[0]);
+			if (load < 0.1) {
+				System.out.println("load must be greater or equal to 0.1 - 10%");
+				return;
+			} else if (load > 0.99) {
+				System.out.println("load must be lesser or equal to 0.99 - 99%");
+				return;
+			}
+			
+			new CpuKiller().run(load);
 		}
+		catch (NumberFormatException nfe) {
+			System.out.println("wrong load argument value (" + args[0] + ")");
+		}
+	}
+	
+	void run(float load) {
+		ComputingUnitRunner cuRunner = new ComputingUnitRunner(load);
+		cuRunner.run();
 	}
 	
 }
