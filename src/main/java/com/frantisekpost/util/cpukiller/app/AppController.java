@@ -5,8 +5,6 @@ import java.util.ResourceBundle;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -44,26 +42,23 @@ public class AppController implements Initializable {
 		loadSlider.valueProperty().bindBidirectional(sliderValue);
 		loadLabel.textProperty().bind(sliderValue.asString());
 		
-		startButton.setOnAction(new EventHandler<ActionEvent>() {
-			
-			@Override
-			public void handle(ActionEvent event) {
-				if (cuRunner == null) {
-					cuRunner = new ComputingUnitRunner(sliderValue.floatValue()/100);
-					cuRunner.run();
-					runningLabel.visibleProperty().setValue(Boolean.TRUE);
-					startButton.textProperty().setValue("Stop");
-					loadSlider.disableProperty().setValue(Boolean.TRUE);
-				} else {
-					cuRunner.stop();
-					cuRunner = null;
-					runningLabel.visibleProperty().setValue(Boolean.FALSE);
-					startButton.textProperty().setValue("Start");
-					loadSlider.disableProperty().setValue(Boolean.FALSE);
-				}
-			}
-			
-		});
+		startButton.setOnAction(EventHandler -> handleStartButton());
+	}
+	
+	private void handleStartButton() {
+		if (cuRunner == null) {
+			cuRunner = new ComputingUnitRunner(sliderValue.floatValue()/100);
+			cuRunner.run();
+			runningLabel.visibleProperty().setValue(Boolean.TRUE);
+			startButton.textProperty().setValue("Stop");
+			loadSlider.disableProperty().setValue(Boolean.TRUE);
+		} else {
+			cuRunner.stop();
+			cuRunner = null;
+			runningLabel.visibleProperty().setValue(Boolean.FALSE);
+			startButton.textProperty().setValue("Start");
+			loadSlider.disableProperty().setValue(Boolean.FALSE);
+		}
 	}
 
 }
