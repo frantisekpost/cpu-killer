@@ -1,6 +1,7 @@
 package com.frantisekpost.util.cpukiller.app;
 
 import java.net.URL;
+import java.text.NumberFormat;
 import java.util.ResourceBundle;
 
 import javafx.beans.property.IntegerProperty;
@@ -34,10 +35,12 @@ public class AppController implements Initializable {
     private IntegerProperty sliderValue = new SimpleIntegerProperty(defaultSliderValue);
     private ComputingUnitRunner cuRunner;
     
+    private static final NumberFormat NUBER_FORMATTER = NumberFormat.getIntegerInstance();
+    
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		int availableProcessors = Runtime.getRuntime().availableProcessors();
-		numberOfCoresLabel.setText(String.format("%d", availableProcessors));
+		numberOfCoresLabel.setText(NUBER_FORMATTER.format(availableProcessors));
 		
 		loadSlider.valueProperty().bindBidirectional(sliderValue);
 		loadLabel.textProperty().bind(sliderValue.asString());
