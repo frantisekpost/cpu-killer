@@ -16,26 +16,26 @@ import com.frantisekpost.util.cpukiller.ComputingUnitRunner;
 public class AppController implements Initializable {
 
 	@FXML
-	Button startButton;
+	private Button startButton;
 	
 	@FXML
-	Label runningLabel;
+	private Label runningLabel;
 	
 	@FXML
-	Label loadLabel;
+	private Label loadLabel;
 	
 	@FXML
-	Slider loadSlider;
+	private Slider loadSlider;
 	
 	@FXML
-	Label numberOfCoresLabel;
+	private Label numberOfCoresLabel;
 	
 	private int defaultSliderValue = 50;
     private IntegerProperty sliderValue = new SimpleIntegerProperty(defaultSliderValue);
     private ComputingUnitRunner cuRunner;
     
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	public void initialize(URL url, ResourceBundle resourceBundle) {
 		int availableProcessors = Runtime.getRuntime().availableProcessors();
 		numberOfCoresLabel.setText(String.format("%d", availableProcessors));
 		
